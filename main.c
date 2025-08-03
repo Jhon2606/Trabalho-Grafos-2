@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "grafo.h"
+#include "dijkstra.h"
+
+int main() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+
+    int grafo[MAX][MAX];
+    inicializaGrafo(grafo, n);
+    leGrafo(grafo, m);
+
+    int origem, destino, numProibidas;
+
+    // Loop infinito para consultas múltiplas
+    while (printf("\nDigite: origem destino num_cidades_proibidas\n"), 
+           scanf("%d %d %d", &origem, &destino, &numProibidas) == 3) {
+
+        int proibidas[MAX] = {0};
+
+        // Marca as cidades proibidas (as últimas numProibidas do grafo)
+        for (int i = 0; i < numProibidas; i++) {
+            int cidade = n - i;
+            proibidas[cidade] = 1;
+        }
+
+        int resultado = dijkstra(grafo, n, origem, destino, proibidas);
+
+        if (resultado == INF)
+            printf("YL NÃO PODERÁ REALIZAR ESTA VIAGEM\n");
+        else
+            printf("%d\n", resultado);
+    }
+
+    return 0;
+}
