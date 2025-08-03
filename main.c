@@ -5,21 +5,22 @@
 
 int main() {
     int n, m;
+    int grafo[MAX][MAX];
+
+    FILE *grafoFile = freopen(NULL, "r", stdin);
     scanf("%d %d", &n, &m);
 
-    int grafo[MAX][MAX];
     inicializaGrafo(grafo, n);
-    leGrafo(grafo, m);
+    lerGrafo(grafo, m);
+
+    freopen("/dev/tty", "r", stdin);
 
     int origem, destino, numProibidas;
 
-    // Loop infinito para consultas múltiplas
-    while (printf("\nDigite: origem destino num_cidades_proibidas\n"), 
+    while (printf("\nDigite a origem, destino e o numero de cidades proibidas\n"),
            scanf("%d %d %d", &origem, &destino, &numProibidas) == 3) {
 
         int proibidas[MAX] = {0};
-
-        // Marca as cidades proibidas (as últimas numProibidas do grafo)
         for (int i = 0; i < numProibidas; i++) {
             int cidade = n - i;
             proibidas[cidade] = 1;

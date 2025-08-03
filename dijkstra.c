@@ -34,6 +34,5 @@ int dijkstra(int grafo[MAX][MAX], int n, int origem, int destino, int proibidas[
             }
         }
     }
-
     return dist[destino];
 }

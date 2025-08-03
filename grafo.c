@@ -7,7 +7,7 @@ void inicializaGrafo(int grafo[MAX][MAX], int n) {
             grafo[i][j] = (i == j) ? 0 : INF;
 }
 
-void leGrafo(int grafo[MAX][MAX], int m) {
+void lerGrafo(int grafo[MAX][MAX], int m) {
     int u, v, w;
     for (int i = 0; i < m; i++) {
         scanf("%d %d %d", &u, &v, &w);
