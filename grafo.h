@@ -6,6 +6,5 @@
 
 void inicializaGrafo(int grafo[MAX][MAX], int n);
 void lerGrafo(int grafo[MAX][MAX], int m);
-//void imprimeGrafo(int grafo[MAX][MAX], int n);
 
 #endif
