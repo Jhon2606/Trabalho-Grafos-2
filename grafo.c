@@ -7,10 +7,10 @@ void inicializaGrafo(int grafo[MAX][MAX], int n) {
             grafo[i][j] = (i == j) ? 0 : INF;
 }
 
-void lerGrafo(int grafo[MAX][MAX], int m) {
+void lerGrafo(int grafo[MAX][MAX], int m, FILE *arquivo) {
     int cidade1, cidade2, tamanho_estrada;
     for (int i = 0; i < m; i++) {
-        scanf("%d %d %d", &cidade1, &cidade2, &tamanho_estrada);
+        fscanf(arquivo, "%d %d %d", &cidade1, &cidade2, &tamanho_estrada);
         if (tamanho_estrada < grafo[cidade1][cidade2]) {
             grafo[cidade1][cidade2] = tamanho_estrada;
             grafo[cidade2][cidade1] = tamanho_estrada;

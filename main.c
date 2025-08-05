@@ -3,33 +3,53 @@
 #include "grafo.h"
 #include "dijkstra.h"
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Uso: %s nome_do_arquivo.txt\n", argv[0]);
+        return 1;
+    }
+
+    FILE *arquivo = fopen(argv[1], "r");
+    if (arquivo == NULL) {
+        perror("Erro ao abrir o arquivo");
+        return 1;
+    }
+
     int n, m;
-    scanf("%d %d", &n, &m);
+    fscanf(arquivo, "%d %d", &n, &m);
 
     int grafo[MAX][MAX];
     inicializaGrafo(grafo, n);
-    lerGrafo(grafo, m);
-
+    
+    lerGrafo(grafo, m, arquivo);
+    fclose(arquivo);
 
     int origem, destino, numProibidas;
 
-    printf("\nResultado:\n");
-    while (scanf("%d %d %d", &origem, &destino, &numProibidas) == 3) {
+while (1) {
+    printf("\nInsira a cidade de origem: ");
+    scanf("%d", &origem);
 
-        int proibidas[MAX] = {0};
-        for (int i = 0; i < numProibidas; i++) {
-            int cidade = n - i;
-            proibidas[cidade] = 1;
-        }
+    printf("Insira a cidade de destino: ");
+    if (scanf("%d", &destino) != 1) break;
 
-        int resultado = dijkstra(grafo, n, origem, destino, proibidas);
+    printf("Insira a quantidade de cidades proibidas: ");
+    if (scanf("%d", &numProibidas) != 1) break;
 
-        if (resultado == INF)
-            printf("YL NÃO PODERÁ REALIZAR ESTA VIAGEM\n");
-        else
-            printf("%d\n", resultado);
+    int proibidas[MAX] = {0};
+    for (int i = 0; i < numProibidas; i++) {
+        int cidade = n - i;
+        proibidas[cidade] = 1;
     }
+
+    int resultado = dijkstra(grafo, n, origem, destino, proibidas);
+
+    if (resultado == INF)
+        printf("YL NÃO PODERÁ REALIZAR ESTA VIAGEM\n");
+    else
+        printf("Menor caminho: %d\n", resultado);
+}
+
 
     return 0;
 }

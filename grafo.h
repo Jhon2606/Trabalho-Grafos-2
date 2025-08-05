@@ -5,6 +5,6 @@
 #define INF 1000000
 
 void inicializaGrafo(int grafo[MAX][MAX], int n);
-void lerGrafo(int grafo[MAX][MAX], int m);
+void lerGrafo(int grafo[MAX][MAX], int m, FILE *arquivo);
 
 #endif
