@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 
 while (1) {
     printf("\nInsira a cidade de origem: ");
-    scanf("%d", &origem);
+    if (scanf("%d", &origem) != 1) break;
 
     printf("Insira a cidade de destino: ");
     if (scanf("%d", &destino) != 1) break;
