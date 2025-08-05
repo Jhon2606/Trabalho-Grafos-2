@@ -14,7 +14,7 @@ int main() {
 
     int origem, destino, numProibidas;
 
-    printf("\nDigite a origem, destino e o numero de cidades proibidas\n");
+    printf("\nResultado:\n");
     while (scanf("%d %d %d", &origem, &destino, &numProibidas) == 3) {
 
         int proibidas[MAX] = {0};
